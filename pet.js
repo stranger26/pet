@@ -1,7 +1,7 @@
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
-  Session.setDefault('level', 0);
+  Session.setDefault('level', 1);
 
   Template.checkIn.helpers({
     counter: function () {
@@ -19,12 +19,16 @@ if (Meteor.isClient) {
     },
     'click .reset': function () {
       Session.set('counter', 0);
-      Session.set('level',0);
+      Session.set('level',1);
     }
   });
   
   Tracker.autorun( function () {
-      Session.set('level', parseInt((Session.get('counter'))/2));
+    if (Session.get('level')>=5) {
+      Session.set('level',5);
+    } else {
+      Session.set('level', parseInt((Session.get('counter'))/2)+1);
+    }
   });
 
 }
