@@ -1,0 +1,15 @@
+<head>
+  <title>Pet</title>
+</head>
+
+<body>
+  <h1>This is your pet</h1>
+  {{> checkIn}}
+</body>
+
+<template name="checkIn">
+  <img class='pet' src='/{{level}}.svg' />
+  <button class="add">Check In</button>
+  <p>You've checked in {{counter}} times.</p>
+  <button class="reset">Reset</button>
+</template>
